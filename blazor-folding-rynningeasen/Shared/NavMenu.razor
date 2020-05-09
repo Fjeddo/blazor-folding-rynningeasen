@@ -1,0 +1,58 @@
+﻿
+<style type="text/css">
+    span.oi.oi-external-link {
+        font-size: 0.7rem;
+        left: 0.3rem;
+        top: 0
+    }
+</style>
+<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">Folding@@Rynningeåsen</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="https://foldingathome.org/" target="_blank">
+                <span class="oi oi-beaker" aria-hidden="true"></span> Folding@@home <span class="oi oi-external-link"></span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="https://boinc.bakerlab.org/rosetta/" target="_blank">
+                <span class="oi oi-beaker" aria-hidden="true"></span> Rosetta@home <span class="oi oi-external-link"></span>
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="https://boinc.berkeley.edu/" target="_blank">
+                <span class="oi oi-globe" aria-hidden="true"></span> Boinc <span class="oi oi-external-link"></span>
+            </NavLink>
+        </li>
+    </ul>
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="raw" Match="NavLinkMatch.All">
+                <span class="oi oi-code" aria-hidden="true"></span> Raw data
+            </NavLink>
+        </li>
+    </ul>
+</div>
+
+@code {
+
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

@@ -1,0 +1,43 @@
+﻿@page "/raw"
+@inject INotifier Notifier
+@implements IDisposable
+
+<h1>Folding@@Rynningeåsen</h1>
+<hr />
+@foreach (var kv in Data)
+{
+    <h2>FaH host: @kv.Key</h2>
+    <pre>@kv.Value</pre>
+    <hr/>
+}
+@code
+{
+    private Dictionary<string, string> Data = new Dictionary<string, string>();
+
+    private Action<KeyValuePair<string, string>> _dataReceived;
+
+    private Guid _subscriberId;
+
+    protected override Task OnInitializedAsync()
+    {
+        _dataReceived = s =>
+        {
+            Data[s.Key] = s.Value;
+            InvokeAsync(StateHasChanged);
+        };
+
+        _subscriberId = Notifier.Register(_dataReceived);
+
+        Data = Notifier.CurrentState;
+
+        return base.OnInitializedAsync();
+    }
+
+    public void Dispose()
+    {
+        if (_subscriberId != Guid.Empty)
+        {
+            Notifier.Unregister(_subscriberId);
+        }
+    }
+}
