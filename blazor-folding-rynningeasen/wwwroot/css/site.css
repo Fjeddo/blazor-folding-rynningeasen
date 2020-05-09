@@ -47,7 +47,8 @@ app {
 }
 
 .sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    /*background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);*/
+    background-color: #E0E0E0;
 }
 
     .sidebar .top-row {
@@ -58,17 +59,25 @@ app {
         font-size: 1.1rem;
     }
 
-    .sidebar .oi {
-        width: 2rem;
-        font-size: 1.1rem;
+    .sidebar i.oi {
+        width: 1.5rem;
+        font-size: 0.95rem;
         vertical-align: text-top;
-        top: -2px;
+        top: -1px;
+        right: 0;
+        text-align: center;
+        position: relative;
     }
 
-    .sidebar .nav-item {
-        font-size: 0.9rem;
-        padding-bottom: 0.5rem;
-    }
+        .sidebar i.oi.oi-external-link {
+            font-size: 0.6rem;
+            top: 5px;
+        }
+
+        .sidebar .nav-item {
+            font-size: 0.9rem;
+            padding-bottom: 0.5rem;
+        }
 
         .sidebar .nav-item:first-of-type {
             padding-top: 1rem;

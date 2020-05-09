@@ -1,0 +1,67 @@
+﻿<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">Folding@@Rynningeåsen</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<style type="text/css">
+    .blazored-sub-menu-header span i {
+        right: 10px;
+    }
+</style>
+
+<div class="@NavMenuCssClass">
+    <BlazoredMenu>
+        <BlazoredMenuItem>
+            <NavLink href="/" Match="NavLinkMatch.All">
+                <i class="oi oi-home" aria-hidden="true"></i> Home
+            </NavLink>
+        </BlazoredMenuItem>
+        <BlazoredSubMenu Header="Externals">
+            <HeaderTemplate>
+                <i class="oi oi-globe"></i> Externals
+            </HeaderTemplate>
+            <MenuTemplate>
+
+                <BlazoredMenuItem>
+                    <NavLink href="https://foldingathome.org/" target="_blank">
+                        <i class="oi oi-beaker" aria-hidden="true"></i> Folding@@home <i class="oi oi-external-link"></i>
+                    </NavLink>
+                </BlazoredMenuItem>
+
+                <BlazoredMenuItem>
+                    <NavLink href="https://boinc.bakerlab.org/rosetta/" target="_blank">
+                        <i class="oi oi-beaker" aria-hidden="true"></i> Rosetta@home <i class="oi oi-external-link"></i>
+                    </NavLink>
+                </BlazoredMenuItem>
+
+                <BlazoredMenuItem>
+                    <NavLink href="https://boinc.berkeley.edu/" target="_blank">
+                        <i class="oi oi-globe" aria-hidden="true"></i> Boinc <i class="oi oi-external-link"></i>
+                    </NavLink>
+                </BlazoredMenuItem>
+
+            </MenuTemplate>
+        </BlazoredSubMenu>
+        <BlazoredMenuItem>
+            <NavLink href="/raw">
+                <i class="oi oi-code" aria-hidden="true"></i> Raw data
+            </NavLink>
+        </BlazoredMenuItem>
+    </BlazoredMenu>
+</div>    
+
+@code 
+{
+    private string[] Hosts = new[] {"test", "test2"};
+
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}
